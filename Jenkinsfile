@@ -37,6 +37,6 @@ node
 
        Regards,
        Vicky''', cc: 'vickyarthur7@gmail.com', from: '', replyTo: '', subject: 'Build finished..', to: 'vickyarthur7@gmail.com'
-    }
+ }
+ */
 }
-*/
