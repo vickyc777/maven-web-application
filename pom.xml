@@ -21,7 +21,7 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://3.110.218.192:9000/</sonar.host.url>
+		<sonar.host.url>http://13.232.140.125:9000/</sonar.host.url>
                 <sonar.login>admin</sonar.login>
 		<sonar.password>password</sonar.password>
 		
@@ -100,13 +100,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.127.87.125:9036/vickydevops/repository/amazon-release/</url>
+	      <url>http://13.233.153.70:9036/vickydevops/repository/amazon-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.127.87.125:9036/vickydevops/repository/amazon-snapshot/</url>
+	      <url>http://13.233.153.70:9036/vickydevops/repository/amazon-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
