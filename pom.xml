@@ -100,13 +100,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://3.110.224.29:9036/vickydevops/repository/amazon-release/</url>
+	      <url>http://43.204.96.41:9036/vickydevops/repository/amazon-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.110.224.29:9036/vickydevops/repository/amazon-snapshot/</url>
+	      <url>http://43.204.96.41:9036/vickydevops/repository/amazon-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
