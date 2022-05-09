@@ -1,0 +1,79 @@
+pipeline
+{
+  agent any
+  
+  tools
+  {
+      maven 'Maven3.8.5'
+  }
+  
+  triggers
+  {
+      pollSCM('* * * * *')
+  }
+  options
+  {
+      timestamps()
+      buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))
+  }
+  stages 
+  {
+      stage('CheckOut')
+      {
+          steps
+          {
+              git branch: 'development', credentialsId: 'acf1a30b-30ef-4056-b688-e0077ada08b0', url: 'https://github.com/vickyc777/maven-web-application.git'
+          }
+      }
+      stage('Build')
+      {
+          steps
+          {
+              sh "mvn clean package"
+          }
+      }
+      stage('ExecuteSonarqubeReport')
+      {
+          steps
+          {
+              sh "mvn sonar:sonar"
+          }
+      }
+      stage('UploadArtifactsintoNexus')
+      {
+          steps
+          {
+              sh "mvn deploy"
+          }
+      }
+      stage('DeployAppintoTomcat')
+      {
+          steps
+          {
+              sshagent(['38bf683d-742a-45a5-b3cf-7709f745ee43'])
+              {
+             sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@3.111.39.12:/opt/apache-tomcat-9.0.62/webapps/" 
+            }
+            
+          }
+      }
+  }
+      post
+      {
+          success
+          {
+             mail bcc: 'bobvick375@gmail.com', body: '''Build done!!
+
+Regards,
+Vicky Devops''', cc: 'bobvick375@gmail.com', from: '', replyTo: '', subject: 'Build  done!', to: 'bobvick375@gmail.com'
+          }
+          failure
+          {
+             mail bcc: 'bobvick375@gmail.com', body: '''Build done!!
+
+Regards,
+Vicky Devops''', cc: 'bobvick375@gmail.com', from: '', replyTo: '', subject: 'Build  done!', to: 'bobvick375@gmail.com'
+          } 
+      }
+  }
+    
